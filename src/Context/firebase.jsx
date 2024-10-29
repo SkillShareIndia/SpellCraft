@@ -6,7 +6,7 @@ import { getStorage, ref,getDownloadURL, } from "firebase/storage";
 const FirebaseContext = createContext(null);
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCe2OR-xOzLeOcUf2v1fXZB4zJoNbzD35E",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "skillshareindia-admin.firebaseapp.com",
     projectId: "skillshareindia-admin",
     storageBucket: "skillshareindia-admin.appspot.com",
