@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -22,18 +22,20 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [activeForm, setActiveForm] = useState('');
 
-  const handleSchoolChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleStudentChange = (e) => {
-    setStudentData({ ...studentData, [e.target.name]: e.target.value });
+  // Handle change for both forms
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (activeForm === "school") {
+      setFormData({ ...formData, [name]: value });
+    } else if (activeForm === "student") {
+      setStudentData({ ...studentData, [name]: value });
+    }
   };
 
   const handleSchoolSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzxTOanvDLW1Xnn2bjblLDhx-LV8vLd5tyGhN_efYGvBilXkPpzveEN0XWuNOq-MjOtWg/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzWVOy8c5GsUWQW3Kak4_UDBeOiPd7HAhY0YKF5lXFGychIHyq-ZeEV_GC5i4Nzyt59/exec";
     const data = new URLSearchParams(formData);
 
     fetch(scriptURL, {
@@ -55,7 +57,7 @@ const Register = () => {
           schoolContact: '',
           schoolEmail: '',
         });
-        setActiveForm(''); // Close the form without animation
+        setActiveForm(''); // Close the form
       })
       .catch(() => {
         alert('Error submitting school form!');
@@ -68,7 +70,7 @@ const Register = () => {
   const handleStudentSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    const studentScriptURL = 'https://script.google.com/macros/s/AKfycbzGb6WWyxkY3NvGLCWdssQtUudizen5B_eBtWEdJWCR7RQtg2jEW52prIiut0yU8-PZ9g/exec';
+    const studentScriptURL = 'https://script.google.com/macros/s/AKfycbwHtPCEH6qwtOD4o4HWH0U8oitXvUnHfEAN_sPS4RH-I6YYiXqFc5HW_ziEys09-1_h/exec';
     const data = new URLSearchParams(studentData);
 
     fetch(studentScriptURL, {
@@ -91,7 +93,7 @@ const Register = () => {
           studentSchoolName: '',
           studentAddress: '',
         });
-        setActiveForm(''); // Close the form without animation
+        setActiveForm(''); // Close the form
       })
       .catch(() => {
         alert('Error submitting student form!');
@@ -102,110 +104,107 @@ const Register = () => {
   };
 
   return (
-    <div className="container mx-auto py-10 px-4">
-      <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">Registration</h2>
+    <div className="container mx-auto px-4 py-10">
+      <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6">
+        Registration
+      </h1>
 
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-4xl mx-auto">
-        {activeForm === '' ? (
-          <div className="flex flex-wrap justify-center gap-6">
-            {/* School Card */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-100 p-6 rounded-lg shadow-lg max-w-3xl mx-auto">
+        {activeForm === "" ? (
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
             <motion.div
-              className="bg-gradient-to-r from-purple-500 to-purple-700 p-6 rounded-lg shadow-lg w-full md:w-1/2 transition-transform transform hover:scale-105 cursor-pointer"
-              onClick={() => setActiveForm('school')}
-              whileHover={{ scale: 1.05 }}
+              className="w-full sm:w-1/2 bg-gradient-to-r from-purple-500 to-purple-700 text-white rounded-lg p-6 shadow-lg cursor-pointer transform transition-transform hover:scale-105"
+              onClick={() => setActiveForm("school")}
             >
-              <h3 className="text-2xl font-semibold mb-4 text-white text-center">School Registration</h3>
+              <h2 className="text-center text-lg font-semibold">
+                School Registration
+              </h2>
             </motion.div>
-
-            {/* Student Card */}
             <motion.div
-              className="bg-gradient-to-r from-teal-500 to-teal-700 p-6 rounded-lg shadow-lg w-full md:w-1/2 transition-transform transform hover:scale-105 cursor-pointer"
-              onClick={() => setActiveForm('student')}
-              whileHover={{ scale: 1.05 }}
+              className="w-full sm:w-1/2 bg-gradient-to-r from-teal-500 to-teal-700 text-white rounded-lg p-6 shadow-lg cursor-pointer transform transition-transform hover:scale-105"
+              onClick={() => setActiveForm("student")}
             >
-              <h3 className="text-2xl font-semibold mb-4 text-white text-center">Student Registration</h3>
+              <h2 className="text-center text-lg font-semibold">
+                Student Registration
+              </h2>
             </motion.div>
           </div>
         ) : (
           <div className="mt-6">
-            {/* School Form */}
-            {activeForm === 'school' && (
-              <div className="overflow-hidden">
-                <div className="bg-gradient-to-r from-white to-purple-50 p-6 rounded-lg shadow-md">
-                  <form onSubmit={handleSchoolSubmit} className="space-y-4">
-                    {['schoolName', 'schoolAddress', 'principalName', 'schoolContact', 'schoolEmail'].map((field, index) => (
-                      <div key={index} className="mb-4">
-                        <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor={field}>
-                          {field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-                        </label>
-                        <input
-                          type={field === 'schoolEmail' ? 'email' : 'text'}
-                          name={field}
-                          required
-                          className="shadow appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-600"
-                          placeholder={`Enter ${field.replace(/([A-Z])/g, ' $1')}`}
-                          value={formData[field]}
-                          onChange={handleSchoolChange}
-                        />
-                      </div>
-                    ))}
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className={`bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300 ease-in-out transform hover:scale-105 ${loading && 'opacity-50 cursor-not-allowed'}`}
+            <div className="overflow-hidden bg-white p-6 rounded-lg shadow-lg border-4 border-indigo-200">
+              <h3 className="text-xl font-semibold text-center text-gray-700 mb-4">
+                {activeForm === "school"
+                  ? "School Registration Form"
+                  : "Student Registration Form"}
+              </h3>
+              <form
+                className="space-y-4"
+                onSubmit={activeForm === "school" ? handleSchoolSubmit : handleStudentSubmit}
+              >
+                {(activeForm === "school"
+                  ? [
+                      "schoolName",
+                      "principalName",
+                      "schoolContact",
+                      "schoolEmail",
+                      "schoolAddress",
+                    ]
+                  : [
+                      "studentName",
+                      "studentClass",
+                      "studentContact",
+                      "studentEmail",
+                      "studentSchoolName",
+                      "studentAddress",
+                    ]
+                ).map((field, index) => (
+                  <div key={index}>
+                    <label
+                      htmlFor={field}
+                      className="block text-sm font-medium text-gray-600 mb-1"
                     >
-                      {loading ? 'Submitting...' : 'Submit Form'}
-                    </button>
-                  </form>
-                </div>
-              </div>
-            )}
-
-            {/* Student Form */}
-            {activeForm === 'student' && (
-              <div className="overflow-hidden">
-                <div className="bg-gradient-to-r from-white to-teal-50 p-6 rounded-lg shadow-md max-w-md mx-auto">
-                  <h3 className="text-2xl font-semibold text-center mb-4 text-teal-700">Student Registration</h3>
-                  <form onSubmit={handleStudentSubmit} className="space-y-4">
-                    {['studentName', 'studentClass', 'studentContact', 'studentEmail', 'studentSchoolName', 'studentAddress'].map((field, index) => (
-                      <div key={index} className="mb-4">
-                        <label className="block text-gray-700 text-sm font-semibold mb-2" htmlFor={field}>
-                          {field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
-                        </label>
-                        {field === 'studentAddress' ? (
-                          <textarea
-                            name={field}
-                            required
-                            rows="3"
-                            className="shadow appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-teal-600"
-                            placeholder="Enter student's address"
-                            value={studentData[field]}
-                            onChange={handleStudentChange}
-                          />
-                        ) : (
-                          <input
-                            type={field === 'studentEmail' ? 'email' : 'text'}
-                            name={field}
-                            required
-                            className="shadow appearance-none border border-gray-300 rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-teal-600"
-                            placeholder={`Enter ${field.replace(/([A-Z])/g, ' $1')}`}
-                            value={studentData[field]}
-                            onChange={handleStudentChange}
-                          />
-                        )}
-                      </div>
-                    ))}
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className={`bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-lg w-full transition duration-300 ease-in-out transform hover:scale-105 ${loading && 'opacity-50 cursor-not-allowed'}`}
-                    >
-                      {loading ? 'Submitting...' : 'Submit Form'}
-                    </button>
-                  </form>
-                </div>
-              </div>
-            )}
+                      {field.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+                    </label>
+                    {field.includes("address") ? (
+                      <textarea
+                        id={field}
+                        name={field}
+                        rows="3"
+                        required
+                        value={activeForm === "school" ? formData[field] : studentData[field]}
+                        onChange={handleInputChange}
+                        className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        placeholder={`Enter ${field}`}
+                      />
+                    ) : (
+                      <input
+                        type={field.includes("email") ? "email" : field.includes("contact") ? "tel" : "text"}
+                        id={field}
+                        name={field}
+                        required
+                        value={activeForm === "school" ? formData[field] : studentData[field]}
+                        onChange={handleInputChange}
+                        className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        placeholder={`Enter ${field}`}
+                      />
+                    )}
+                  </div>
+                ))}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`w-full bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-2 rounded-lg transition-transform ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                >
+                  {loading ? "Submitting..." : "Submit"}
+                </button>
+              </form>
+              <button
+                className="mt-4 w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 rounded-lg transition-transform"
+                onClick={() => setActiveForm('')}
+              >
+                Go Back
+              </button>
+            </div>
           </div>
         )}
       </div>
