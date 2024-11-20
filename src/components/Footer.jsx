@@ -47,7 +47,7 @@ const Footer = () => {
             transition={{ duration: 0.3 }}
           >
             <img src={images.mail} alt="Mail Logo" className="w-6 h-6 mr-2" />
-            <span className="text-[#002F6C] text-sm sm:text-base">contact@skillshareindia.com</span>
+            <span className="text-[#002F6C] text-sm sm:text-base">skillshareindia00@gmail.com</span>
           </motion.div>
 
           {/* Phone */}
@@ -57,20 +57,27 @@ const Footer = () => {
             transition={{ duration: 0.3 }}
           >
             <img src={images.phone} alt="Phone Logo" className="w-6 h-6 mr-2" />
-            <span className="text-[#002F6C] text-sm sm:text-base">+91 12345 67890</span>
+            <span className="text-[#002F6C] text-sm sm:text-base">+918700630842</span>
           </motion.div>
 
-          {/* Address */}
-          <motion.div 
-            className="flex items-start justify-center md:justify-start"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
-          >
-            <img src={images.location} alt="Address Logo" className="w-6 h-6 mr-2" />
-            <span className="break-words max-w-xs text-[#002F6C] text-sm sm:text-base text-center md:text-left">
-              123, SkillShare Street, New Delhi, India
-            </span>
-          </motion.div>
+         {/* Address */}
+<a 
+  href="https://www.google.com/maps?q=Skillshare+India,+723+Tower+C,+Seventh+Floor,+Logix+Cyberpark,+sector+62,+Noida,+201-301" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <motion.div 
+    className="flex items-start justify-center md:justify-start"
+    whileHover={{ scale: 1.1 }}
+    transition={{ duration: 0.3 }}
+  >
+    <img src={images.location} alt="Address Logo" className="w-6 h-6 mr-2" />
+    <span className="break-words max-w-xs text-[#002F6C] text-sm sm:text-base text-center md:text-left">
+      Skillshare India, 723 Tower C, Seventh Floor, Logix Cyberpark, sector 62, Noida, 201-301
+    </span>
+  </motion.div>
+</a>
+
         </motion.div>
       </div>
 

@@ -81,7 +81,7 @@ const Result = () => {
                         <h1 className="text-3xl font-bold mb-4 md:text-2xl sm:text-xl sm:ml-4 sm:mb-2">
                             {school.name}
                         </h1>
-                        <div className="flex flex-wrap justify-center gap-8 p-4 border-2 border-gray-300 rounded-lg shadow-md bg-white">
+                        <div className="flex flex-wrap justify-center gap-8 p-4 border-2 border-gray-300 rounded-lg shadow-md bg-gray-100">
                             {school.students.map((student, studentIndex) => (
                                 <motion.div
                                     key={studentIndex}

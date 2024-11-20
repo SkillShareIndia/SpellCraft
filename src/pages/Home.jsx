@@ -50,70 +50,30 @@ const settings = {
   ],
 };
 
+import reviewPhoto1 from "../assets/images/Skill-Share-Reviews.jpg";
+import reviewPhoto2 from "../assets/images/Skill-Share-Reviews-01.jpg";
+import reviewPhoto3 from "../assets/images/Skill-Share-Reviews-02.jpg";
+
 const reviews = [
   {
-    name: "John Doe",
-    photo: "https://randomuser.me/api/portraits/men/1.jpg",
-    review:
-      "Their service exceeded my expectations. They were professional, courteous, and delivered on time.",
+    name: "Thanks SkillShare India",
+    photo: reviewPhoto1,
+    review: "Amazing courses, well-organized material, and a great platform to upgrade skills. Highly recommend!",
     rating: 5,
   },
   {
-    name: "Jane Smith",
-    photo: "https://randomuser.me/api/portraits/women/2.jpg",
-    review:
-      "I had a great experience! They were very responsive and ensured that all my queries were answered.",
+    name: "Thanks SkillShare India",
+    photo: reviewPhoto2,
+    review: "SkillShare provided incredible insights into NEP and education. A blessing for teachers returning to the field!",
     rating: 4,
   },
   {
-    name: "Sam Wilson",
-    photo: "https://randomuser.me/api/portraits/men/3.jpg",
-    review:
-      "Fantastic service! The team was knowledgeable and went the extra mile to ensure everything was perfect.",
+    name: "Thanks SkillShare India",
+    photo: reviewPhoto3,
+    review: "Enriching experience with practical strategies and excellent networking opportunities. Loved it!",
     rating: 5,
   },
-  {
-    name: "Emily Davis",
-    photo: "https://randomuser.me/api/portraits/women/4.jpg",
-    review:
-      "I was very happy with the service provided. The staff were friendly and the process was smooth.",
-    rating: 4,
-  },
-  {
-    name: "Michael Brown",
-    photo: "https://randomuser.me/api/portraits/men/5.jpg",
-    review:
-      "The professionalism and dedication shown by the team were truly remarkable. I highly recommend them.",
-    rating: 5,
-  },
-  {
-    name: "Laura Johnson",
-    photo: "https://randomuser.me/api/portraits/women/6.jpg",
-    review:
-      "Wonderful experience. They really take the time to understand your needs and provide excellent solutions.",
-    rating: 4,
-  },
-  {
-    name: "David Harris",
-    photo: "https://randomuser.me/api/portraits/men/7.jpg",
-    review:
-      "A seamless experience from start to finish. The team handled everything perfectly.",
-    rating: 5,
-  },
-  {
-    name: "Sophia Martinez",
-    photo: "https://randomuser.me/api/portraits/women/8.jpg",
-    review:
-      "Their customer service was top-notch. I felt supported throughout the entire process.",
-    rating: 5,
-  },
-  {
-    name: "James Lee",
-    photo: "https://randomuser.me/api/portraits/men/9.jpg",
-    review:
-      "Highly recommend! The team was professional, friendly, and very efficient in handling my requests.",
-    rating: 4,
-  },
+  // Repeat for other entries...
 ];
 
 const Home = () => {

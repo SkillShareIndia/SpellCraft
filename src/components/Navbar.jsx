@@ -33,10 +33,10 @@ const Navbar = () => {
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/about-us", label: "About Us" },
-    { to: "/result", label: "Result" },
+    { to: "/results", label: "Results" },
     { to: "/reviews", label: "Reviews" },
     { to: "/brochure", label: "Brochure" },
-    { to: "/contact", label: "Contact" },
+    { to: "/contact-us", label: "Contact Us" },
     { to: "/register", label: "Register" },
   ];
 
