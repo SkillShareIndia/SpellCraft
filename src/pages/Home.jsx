@@ -296,7 +296,7 @@ const Home = () => {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between text-center h-[400px] mx-auto transition-transform transform hover:scale-105">
+        <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col justify-between text-center h-[500px] mx-auto transition-transform transform hover:scale-105">
           <motion.img
             src={review.photo}
             alt={review.name}
