@@ -50,21 +50,22 @@ const settings = {
   ],
 };
 
-import reviewPhoto1 from "../assets/images/Skill-Share-Reviews.jpg";
-import reviewPhoto2 from "../assets/images/Skill-Share-Reviews-01.jpg";
-import reviewPhoto3 from "../assets/images/Skill-Share-Reviews-02.jpg";
+import reviewPhoto1 from "../assets/images/Hallmark-logo.jpg";
+import reviewPhoto2 from "../assets/images/St.xaviers-logo.jpg";
+import reviewPhoto3 from "../assets/images/chinmaya-logo.png";
+import reviewPhoto4 from "../assets/images/vagad-logo.png";
 
 const reviews = [
   {
-    name: "Thanks SkillShare India",
+    name: "Hallmark world school Team",
     photo: reviewPhoto1,
-    review: "Amazing courses, well-organized material, and a great platform to upgrade skills. Highly recommend!",
+    review: "Sincere appreciation for the Spell Craft Olympiad held in our school. It was a really exciting and engaging approach of learning and enhancing vocabulary in an enjoyable manner and helped in increasing English proficiency of our students.",
     rating: 5,
   },
   {
-    name: "Thanks SkillShare India",
+    name: "St. Xavier’s School",
     photo: reviewPhoto2,
-    review: "SkillShare provided incredible insights into NEP and education. A blessing for teachers returning to the field!",
+    review: "Spell Craft Olympiad, An interactive approach, which significantly improved the confidence in using English vocabulary. It was challenging yet enjoyable, which fostered a deeper interest in learning and mastering language skills.",
     rating: 4,
   },
   {
